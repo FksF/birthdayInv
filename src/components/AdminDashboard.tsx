@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const supabase = createClient(
   import.meta.env.PUBLIC_SUPABASE_URL,
@@ -72,14 +73,29 @@ export default function AdminDashboard() {
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-12">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="container mx-auto px-4 py-12"
+      >
         <div className="text-center">
-          <div className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
+          <motion.div 
+            className="text-4xl md:text-5xl font-heading font-bold text-white mb-4"
+            animate={{ scale: [1, 1.05, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
             📊 Respuestas de Invitación
-          </div>
-          <div className="text-purple-200 text-xl">Cargando respuestas... ⏳</div>
+          </motion.div>
+          <motion.div 
+            className="text-purple-200 text-xl flex items-center justify-center gap-2"
+            animate={{ opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          >
+            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-purple-400"></div>
+            Cargando respuestas...
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     );
   }
 

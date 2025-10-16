@@ -1,12 +1,12 @@
 ---
-import RSVPForm from '../components/RSVPForm.tsx';
+import HeroRSVPButton from '../components/HeroRSVPButton.tsx';
 import '../styles/global.css';
 
 const title = "🎉 ¡Estás Invitado a mi Cumpleaños! - 22 de Octubre 2025";
 const description = "Solo una tomada más entre patas 🎂 Te invito a celebrar mi cumpleaños el 22 de octubre desde las 11 AM en Miraflores. ¡Confirma tu asistencia!";
 ---
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,69 +70,99 @@ const description = "Solo una tomada más entre patas 🎂 Te invito a celebrar 
     }
     </script>
 </head>
-<body class="font-sans bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900 min-h-screen">
+<body class="font-sans min-h-screen scroll-smooth relative">
+    <!-- Fondo de Galaxia Animado -->
+    <div class="galaxy-background"></div>
+    <div class="stars-layer-1"></div>
+    <div class="stars-layer-2"></div>
+    <div class="stars-layer-3"></div>
+    <div class="nebula-layer"></div>
+    <div class="cosmic-dust"></div>
+    <div class="shooting-stars">
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+    </div>
+    
+    <!-- Auroras cósmicas -->
+    <div class="cosmic-aurora"></div>
+    
+    <!-- Partículas flotantes adicionales -->
+    <div class="floating-particles-layer">
+        <div class="cosmic-particle" style="top: 10%; left: 5%; animation-delay: 0s;"></div>
+        <div class="cosmic-particle" style="top: 20%; left: 85%; animation-delay: 2s;"></div>
+        <div class="cosmic-particle" style="top: 70%; left: 15%; animation-delay: 4s;"></div>
+        <div class="cosmic-particle" style="top: 80%; left: 75%; animation-delay: 6s;"></div>
+        <div class="cosmic-particle" style="top: 40%; left: 90%; animation-delay: 1s;"></div>
+        <div class="cosmic-particle" style="top: 60%; left: 10%; animation-delay: 3s;"></div>
+    </div>
     <!-- Hero Section -->
-    <section class="relative overflow-hidden">
-        <!-- Background decorations -->
-        <div class="absolute inset-0 opacity-20">
-            <div class="absolute top-10 left-10 w-20 h-20 bg-yellow-400 rounded-full animate-float"></div>
-            <div class="absolute top-40 right-20 w-16 h-16 bg-pink-400 rounded-full animate-float" style="animation-delay: 1s;"></div>
-            <div class="absolute bottom-20 left-1/4 w-12 h-12 bg-blue-400 rounded-full animate-float" style="animation-delay: 2s;"></div>
-            <div class="absolute top-1/2 right-1/4 w-24 h-24 bg-green-400 rounded-full animate-float" style="animation-delay: 0.5s;"></div>
+    <section class="relative overflow-hidden min-h-screen flex items-center">
+        <!-- Background decorations - Responsive con efectos cósmicos -->
+        <div class="absolute inset-0 opacity-30">
+            <div class="absolute top-10 left-4 sm:left-10 w-12 h-12 sm:w-20 sm:h-20 bg-gradient-to-br from-yellow-400 via-orange-500 to-red-500 rounded-full animate-float galaxy-glow" style="box-shadow: 0 0 30px rgba(255, 193, 7, 0.4);"></div>
+            <div class="absolute top-32 sm:top-40 right-4 sm:right-20 w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-pink-400 via-purple-500 to-indigo-500 rounded-full animate-float" style="animation-delay: 1s; box-shadow: 0 0 25px rgba(236, 72, 153, 0.4);"></div>
+            <div class="absolute bottom-32 sm:bottom-20 left-1/4 w-8 h-8 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-400 via-cyan-500 to-teal-500 rounded-full animate-float" style="animation-delay: 2s; box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);"></div>
+            <div class="absolute top-1/2 right-1/4 w-16 h-16 sm:w-24 sm:h-24 bg-gradient-to-br from-green-400 via-emerald-500 to-lime-500 rounded-full animate-float" style="animation-delay: 0.5s; box-shadow: 0 0 35px rgba(34, 197, 94, 0.4);"></div>
+            
+            <!-- Planetas adicionales -->
+            <div class="absolute top-1/4 left-1/3 w-6 h-6 sm:w-10 sm:h-10 bg-gradient-to-br from-purple-400 via-violet-500 to-purple-600 rounded-full animate-float" style="animation-delay: 3s; box-shadow: 0 0 15px rgba(147, 51, 234, 0.5);"></div>
+            <div class="absolute bottom-1/4 right-1/3 w-4 h-4 sm:w-8 sm:h-8 bg-gradient-to-br from-rose-400 via-pink-500 to-rose-600 rounded-full animate-float" style="animation-delay: 4s; box-shadow: 0 0 12px rgba(244, 63, 94, 0.5);"></div>
         </div>
 
-        <div class="container mx-auto px-4 py-20 relative z-10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 relative z-10 w-full">
             <div class="text-center">
                 <!-- Date Badge -->
-                <div class="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold px-6 py-2 rounded-full mb-8 text-lg">
+                <div class="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold px-4 py-2 sm:px-6 sm:py-2 rounded-full mb-6 sm:mb-8 text-sm sm:text-lg animate-bounce">
                     22 DE OCTUBRE
                 </div>
                 
                 <!-- Main Title -->
-                <h1 class="text-6xl md:text-8xl font-heading font-bold text-white mb-6 leading-tight">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold text-white mb-4 sm:mb-6 leading-tight px-2 text-shadow">
                     ¡ES MI
                     <br>
-                    <span class="bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 bg-clip-text text-transparent animate-pulse-slow">
+                    <span class="bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 bg-clip-text text-transparent animate-pulse-slow galaxy-glow" style="text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);">
                         CUMPLEAÑOS!
                     </span>
                 </h1>
                 
                 <!-- Subtitle -->
-                <p class="text-xl md:text-2xl text-purple-100 mb-8 max-w-2xl mx-auto">
-                    Solo una tomada más entre patas 🎉
+                <p class="text-lg sm:text-xl lg:text-2xl text-purple-100 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
+                    Será solo una tomada más entre patas 🎉
                 </p>
                 
                 <!-- Time and Place -->
-                <div class="flex flex-col md:flex-row gap-6 justify-center items-center mb-12">
-                    <div class="bg-black/30 backdrop-blur-sm rounded-lg p-6 border border-purple-500/30">
-                        <div class="text-yellow-400 font-semibold mb-2">🕐 HORA</div>
-                        <div class="text-white text-xl">Desde las 11 AM</div>
+                <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-8 sm:mb-12 px-4">
+                    <div class="bg-black/40 backdrop-blur-md rounded-lg p-4 sm:p-6 border border-purple-500/40 w-full sm:w-auto max-w-xs cosmic-hover galaxy-glow">
+                        <div class="text-yellow-400 font-semibold mb-2 text-sm sm:text-base">🕐 HORA</div>
+                        <div class="text-white text-lg sm:text-xl">Desde las 11 AM</div>
                     </div>
-                    <div class="bg-black/30 backdrop-blur-sm rounded-lg p-6 border border-purple-500/30">
-                        <div class="text-yellow-400 font-semibold mb-2">📍 LUGAR</div>
-                        <div class="text-white text-xl">Miraflores</div>
-                        <div class="text-purple-200 text-sm">Ca. Ramón Castilla 399-383</div>
+                    <div class="bg-black/40 backdrop-blur-md rounded-lg p-4 sm:p-6 border border-purple-500/40 w-full sm:w-auto max-w-xs cosmic-hover galaxy-glow">
+                        <div class="text-yellow-400 font-semibold mb-2 text-sm sm:text-base">📍 LUGAR</div>
+                        <div class="text-white text-lg sm:text-xl">Miraflores</div>
+                        <div class="text-purple-200 text-xs sm:text-sm">Ca. Ramón Castilla 399-383</div>
                     </div>
                 </div>
                 
                 <!-- CTA Button -->
-                <a href="#confirmar" class="inline-block bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                    ¡CONFIRMAR ASISTENCIA!
-                </a>
+                <div class="px-4">
+                    <HeroRSVPButton client:load />
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Location Section -->
-    <section class="py-20 bg-black/20 backdrop-blur-sm">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl md:text-5xl font-heading font-bold text-center text-white mb-12">
+    <section class="py-12 sm:py-16 lg:py-20 bg-black/20 backdrop-blur-sm">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-center text-white mb-8 sm:mb-12">
                 📍 UBICACIÓN
             </h2>
             
             <div class="max-w-4xl mx-auto">
-                <div class="bg-black/30 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/30">
-                    <h3 class="text-2xl font-semibold text-white mb-4 text-center">
+                <div class="bg-black/40 backdrop-blur-md rounded-2xl p-4 sm:p-6 lg:p-8 border border-purple-500/40 cosmic-hover galaxy-glow">
+                    <h3 class="text-lg sm:text-xl lg:text-2xl font-semibold text-white mb-4 text-center px-2">
                         Ca. Ramón Castilla 399-383, Miraflores
                     </h3>
                     
@@ -140,12 +170,12 @@ const description = "Solo una tomada más entre patas 🎂 Te invito a celebrar 
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d956.9206379753497!2d-71.51949733036646!3d-16.390125712415124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91424bb1f5122247%3A0xa0f3dcdc49e84045!2sCa.%20Ramon%20Castilla%20399-383%2C%20Miraflores%2004004!5e0!3m2!1ses-419!2spe!4v1760503983564!5m2!1ses-419!2spe" 
                             width="100%" 
-                            height="450" 
+                            height="300"
                             style="border:0;" 
                             allowfullscreen="" 
                             loading="lazy" 
                             referrerpolicy="no-referrer-when-downgrade"
-                            class="w-full">
+                            class="w-full h-64 sm:h-80 lg:h-96">
                         </iframe>
                     </div>
                 </div>
@@ -153,29 +183,26 @@ const description = "Solo una tomada más entre patas 🎂 Te invito a celebrar 
         </div>
     </section>
 
-    <!-- RSVP Section -->
-    <section id="confirmar" class="py-20">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl md:text-5xl font-heading font-bold text-center text-white mb-12">
-                ✨ CONFIRMA TU ASISTENCIA
-            </h2>
-            
-            <div class="max-w-2xl mx-auto">
-                <RSVPForm client:load />
-            </div>
-        </div>
-    </section>
+
 
     <!-- Footer -->
-    <footer class="py-12 bg-black/40 backdrop-blur-sm border-t border-purple-500/30">
-        <div class="container mx-auto px-4 text-center">
-            <div class="text-3xl mb-4">🎂🎉🥳</div>
-            <p class="text-purple-200 mb-2">
+    <footer class="py-8 sm:py-12 bg-black/50 backdrop-blur-md border-t border-purple-500/40 relative">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="text-2xl sm:text-3xl mb-3 sm:mb-4 animate-sparkle">🎂🎉🥳</div>
+            <p class="text-purple-200 mb-2 text-sm sm:text-base px-4 galaxy-glow">
                 ¡No faltes! Va a estar increíble
             </p>
-            <p class="text-purple-300 text-sm">
+            <p class="text-purple-300 text-xs sm:text-sm px-4">
                 22 de Octubre 2025 • Desde las 11 AM • Miraflores
             </p>
+        </div>
+        
+        <!-- Efectos adicionales en el footer -->
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute bottom-4 left-10 w-3 h-3 bg-cyan-400 rounded-full animate-sparkle"></div>
+            <div class="absolute bottom-8 right-16 w-2 h-2 bg-pink-400 rounded-full animate-sparkle" style="animation-delay: 1s;"></div>
+            <div class="absolute bottom-6 left-1/3 w-4 h-4 bg-yellow-400 rounded-full animate-sparkle" style="animation-delay: 2s;"></div>
+            <div class="absolute bottom-10 right-1/4 w-2 h-2 bg-purple-400 rounded-full animate-sparkle" style="animation-delay: 0.5s;"></div>
         </div>
     </footer>
 
