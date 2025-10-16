@@ -451,7 +451,7 @@ export default function HeroRSVPButton() {
                           ✅
                         </motion.div>
                         <div className="font-heading heading-soft text-sm sm:text-base text-green-200 holographic-text">
-                          ¡SÍ VORY!
+                          ¡SÍ VOY!
                         </div>
                       </div>
                     </motion.div>
