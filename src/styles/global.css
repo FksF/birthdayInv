@@ -840,6 +840,12 @@ body {
   .modal-container textarea {
     scroll-margin-top: 120px;
   }
+  
+  /* Textarea más pequeño en móviles */
+  .mobile-textarea {
+    min-height: 60px !important;
+    height: 60px !important;
+  }
 }
 
 /* Prevenir interferencia del mapa en modales */

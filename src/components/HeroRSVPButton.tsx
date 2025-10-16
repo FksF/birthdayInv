@@ -80,21 +80,47 @@ export default function HeroRSVPButton() {
   const handleInputFocus = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     // Solo en móviles
     if (window.innerWidth <= 768) {
+      const element = e.target;
+      const isTextarea = element.tagName.toLowerCase() === 'textarea';
+      const modalElement = element.closest('.modal-container') as HTMLElement;
+      
+      if (isTextarea && modalElement) {
+        // Reducir altura del modal para textarea
+        modalElement.style.maxHeight = '50vh';
+      }
+      
       setTimeout(() => {
-        // Scroll al elemento enfocado con un offset para el teclado
-        const element = e.target;
+        // Scroll al elemento enfocado con un offset mayor para textarea
         const rect = element.getBoundingClientRect();
-        const modalElement = element.closest('.modal-container');
         
         if (modalElement) {
           const modalRect = modalElement.getBoundingClientRect();
-          const scrollTop = rect.top - modalRect.top - 100; // offset para el teclado
+          // Offset mayor para textarea (campo de mensaje) para evitar que lo tape el teclado
+          const offset = isTextarea ? 200 : 100;
+          const scrollTop = modalElement.scrollTop + rect.top - modalRect.top - offset;
+          
           modalElement.scrollTo({
-            top: scrollTop,
+            top: Math.max(0, scrollTop),
             behavior: 'smooth'
           });
         }
-      }, 300); // Esperar a que el teclado aparezca
+      }, isTextarea ? 500 : 300); // Más tiempo para textarea
+    }
+  };
+
+  // Función para manejar cuando se pierde el enfoque
+  const handleInputBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    if (window.innerWidth <= 768) {
+      const element = e.target;
+      const isTextarea = element.tagName.toLowerCase() === 'textarea';
+      const modalElement = element.closest('.modal-container') as HTMLElement;
+      
+      if (isTextarea && modalElement) {
+        // Restaurar altura del modal
+        setTimeout(() => {
+          modalElement.style.maxHeight = '70vh';
+        }, 300);
+      }
     }
   };
 
@@ -569,8 +595,9 @@ export default function HeroRSVPButton() {
                       value={formData.message}
                       onChange={handleInputChange}
                       onFocus={handleInputFocus}
+                      onBlur={handleInputBlur}
                       rows={3}
-                      className="w-full px-4 py-3 sm:px-6 sm:py-4 bg-gradient-to-r from-black/60 to-gray-900/60 border border-purple-400/40 rounded-xl text-white placeholder-purple-200/50 focus:outline-none focus:border-purple-300 focus:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all duration-500 resize-none text-sm sm:text-base font-sans text-elegant backdrop-blur-sm holographic-text"
+                      className="mobile-textarea w-full px-4 py-3 sm:px-6 sm:py-4 bg-gradient-to-r from-black/60 to-gray-900/60 border border-purple-400/40 rounded-xl text-white placeholder-purple-200/50 focus:outline-none focus:border-purple-300 focus:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all duration-500 resize-none text-sm sm:text-base font-sans text-elegant backdrop-blur-sm holographic-text"
                       placeholder="Mensaje para el cumpleañero... 😊"
                       style={{
                         textShadow: "0 0 8px rgba(168,85,247,0.6)"
