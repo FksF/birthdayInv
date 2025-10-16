@@ -804,3 +804,63 @@ body {
     background-position: 20px 20px, 30px 30px;
   }
 }
+
+/* ===== MEJORAS PARA MÓVILES ===== */
+
+/* Evitar zoom en inputs en iOS */
+@media screen and (max-width: 768px) {
+  input[type="text"], 
+  input[type="email"], 
+  input[type="tel"], 
+  textarea, 
+  select {
+    font-size: 16px !important;
+    transform: translateZ(0);
+  }
+  
+  /* Mejorar scroll en modales móviles */
+  .modal-container {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
+  }
+  
+  /* Optimizar altura del modal para teclado virtual */
+  .modal-container {
+    max-height: 70vh !important;
+  }
+  
+  /* Espaciado mejorado para campos de formulario en móviles */
+  .modal-container form > div {
+    margin-bottom: 1rem;
+  }
+  
+  /* Asegurar que los inputs sean accesibles */
+  .modal-container input,
+  .modal-container textarea {
+    scroll-margin-top: 120px;
+  }
+}
+
+/* Prevenir interferencia del mapa en modales */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  touch-action: none; /* Evita scroll del fondo */
+}
+
+/* Mejoras específicas para iOS */
+@supports (-webkit-touch-callout: none) {
+  .modal-container {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Evitar bounce scroll en iOS */
+  .modal-container {
+    overscroll-behavior-y: contain;
+  }
+}

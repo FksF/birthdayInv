@@ -76,6 +76,28 @@ export default function HeroRSVPButton() {
     return Object.keys(newErrors).length === 0;
   };
 
+  // Función para manejar el enfoque en inputs móviles
+  const handleInputFocus = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    // Solo en móviles
+    if (window.innerWidth <= 768) {
+      setTimeout(() => {
+        // Scroll al elemento enfocado con un offset para el teclado
+        const element = e.target;
+        const rect = element.getBoundingClientRect();
+        const modalElement = element.closest('.modal-container');
+        
+        if (modalElement) {
+          const modalRect = modalElement.getBoundingClientRect();
+          const scrollTop = rect.top - modalRect.top - 100; // offset para el teclado
+          modalElement.scrollTo({
+            top: scrollTop,
+            behavior: 'smooth'
+          });
+        }
+      }, 300); // Esperar a que el teclado aparezca
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -194,18 +216,22 @@ export default function HeroRSVPButton() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80 backdrop-blur-md"
+          className="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80 backdrop-blur-md"
           onClick={handleReset}
         >
           <motion.div
             initial={{ y: 30, rotateX: -10, rotateY: 5 }}
             animate={{ y: 0, rotateX: 0, rotateY: 0 }}
             transition={{ delay: 0.1, duration: 0.3, ease: "easeOut" }}
-            className="relative perspective-1000 transform-gpu max-w-sm sm:max-w-md w-full max-h-[90vh] sm:max-h-[85vh] overflow-y-auto futuristic-scrollbar"
+            className="modal-container relative perspective-1000 transform-gpu max-w-sm sm:max-w-md w-full max-h-[80vh] sm:max-h-[85vh] overflow-y-auto futuristic-scrollbar"
             onClick={(e) => e.stopPropagation()}
             style={{
               scrollbarWidth: 'thin',
-              scrollbarColor: '#06b6d4 transparent'
+              scrollbarColor: '#06b6d4 transparent',
+              // Mejorar comportamiento en iOS
+              WebkitOverflowScrolling: 'touch',
+              // Evitar que el scroll se vaya al mapa en móviles
+              touchAction: 'pan-y'
             }}
           >
             {/* Holographic Container */}
@@ -296,6 +322,7 @@ export default function HeroRSVPButton() {
                       name="pin"
                       value={formData.pin}
                       onChange={handleInputChange}
+                      onFocus={handleInputFocus}
                       required
                       maxLength={4}
                       className="w-full px-4 py-3 sm:px-6 sm:py-4 bg-gradient-to-r from-black/60 to-gray-900/60 border border-cyan-400/40 rounded-xl text-white placeholder-cyan-200/50 focus:outline-none focus:border-cyan-300 focus:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all duration-500 text-center text-xl sm:text-2xl tracking-[0.4em] mono-soft backdrop-blur-sm holographic-text"
@@ -369,6 +396,7 @@ export default function HeroRSVPButton() {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
+                      onFocus={handleInputFocus}
                       required
                       className="w-full px-4 py-3 sm:px-6 sm:py-4 bg-gradient-to-r from-black/60 to-gray-900/60 border border-pink-400/40 rounded-xl text-white placeholder-pink-200/50 focus:outline-none focus:border-pink-300 focus:shadow-[0_0_20px_rgba(236,72,153,0.4)] transition-all duration-500 text-base sm:text-lg font-sans text-elegant backdrop-blur-sm holographic-text"
                       placeholder="Tu nombre completo..."
@@ -540,6 +568,7 @@ export default function HeroRSVPButton() {
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
+                      onFocus={handleInputFocus}
                       rows={3}
                       className="w-full px-4 py-3 sm:px-6 sm:py-4 bg-gradient-to-r from-black/60 to-gray-900/60 border border-purple-400/40 rounded-xl text-white placeholder-purple-200/50 focus:outline-none focus:border-purple-300 focus:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all duration-500 resize-none text-sm sm:text-base font-sans text-elegant backdrop-blur-sm holographic-text"
                       placeholder="Mensaje para el cumpleañero... 😊"
@@ -646,7 +675,7 @@ export default function HeroRSVPButton() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
+          className="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
           onClick={handleReset}
         >
           <motion.div
