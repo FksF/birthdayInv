@@ -20,8 +20,9 @@ export default {
         }
       },
       fontFamily: {
-        'sans': ['Inter', 'system-ui', 'sans-serif'],
-        'heading': ['Poppins', 'system-ui', 'sans-serif'],
+        'sans': ['Inter Display', 'Inter', 'system-ui', 'sans-serif'],
+        'heading': ['Frijole', 'system-ui', 'sans-serif'],
+        'mono': ['JetBrains Mono', 'ui-monospace', 'monospace'],
       },
       animation: {
         'float': 'float 3s ease-in-out infinite',

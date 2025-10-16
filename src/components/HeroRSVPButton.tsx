@@ -173,7 +173,7 @@ export default function HeroRSVPButton() {
         <motion.button
           key="initial-button"
           onClick={() => setShowForm(true)}
-          className="w-full sm:w-auto inline-block bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold py-3 px-6 sm:py-4 sm:px-8 rounded-full text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl animate-pulse group max-w-sm sm:max-w-none mx-auto"
+          className="w-full sm:w-auto inline-block bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-heading font-semibold py-3 px-6 sm:py-4 sm:px-8 rounded-full text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl animate-pulse group max-w-sm sm:max-w-none mx-auto text-elegant"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           initial={{ opacity: 0, y: 20 }}
@@ -190,17 +190,17 @@ export default function HeroRSVPButton() {
         // Modal Form - Futuristic Design
         <motion.div
           key="modal-form"
-          initial={{ opacity: 0, scale: 0.8, y: 50 }}
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.8, y: 50 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          exit={{ opacity: 0, scale: 0.9, y: 20 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
           className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80 backdrop-blur-md"
           onClick={handleReset}
         >
           <motion.div
-            initial={{ y: 100, rotateX: -30, rotateY: 15 }}
+            initial={{ y: 30, rotateX: -10, rotateY: 5 }}
             animate={{ y: 0, rotateX: 0, rotateY: 0 }}
-            transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
+            transition={{ delay: 0.1, duration: 0.3, ease: "easeOut" }}
             className="relative perspective-1000 transform-gpu max-w-sm sm:max-w-md w-full max-h-[90vh] sm:max-h-[85vh] overflow-y-auto futuristic-scrollbar"
             onClick={(e) => e.stopPropagation()}
             style={{
@@ -224,20 +224,20 @@ export default function HeroRSVPButton() {
               {/* Header */}
               <div className="relative flex items-center justify-between mb-4 sm:mb-6 z-10">
                 <motion.h3 
-                  className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-cyan-300 via-purple-300 to-blue-300 bg-clip-text text-transparent flex items-center gap-3"
-                  initial={{ opacity: 0, x: -20 }}
+                  className="text-xl sm:text-2xl lg:text-3xl font-heading heading-elegant bg-gradient-to-r from-cyan-300 via-purple-300 to-blue-300 bg-clip-text text-transparent flex items-center gap-3"
+                  initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3, duration: 0.6 }}
+                  transition={{ delay: 0.15, duration: 0.3 }}
                 >
                   <motion.div
                     animate={{ 
                       rotate: [0, 360],
-                      scale: [1, 1.2, 1]
+                      scale: [1, 1.1, 1]
                     }}
                     transition={{ 
-                      duration: 3,
+                      duration: 2,
                       repeat: Infinity,
-                      ease: "easeInOut"
+                      ease: "linear"
                     }}
                   >
                     <PartyPopper className="w-6 h-6 sm:w-8 sm:h-8 text-orange-400 drop-shadow-[0_0_10px_rgba(251,146,60,0.5)]" />
@@ -248,12 +248,12 @@ export default function HeroRSVPButton() {
                 
                 <motion.button
                   onClick={handleReset}
-                  className="relative group p-2 rounded-full bg-gradient-to-r from-red-500/20 to-pink-500/20 border border-red-400/30 hover:border-red-400/60 transition-all duration-300 backdrop-blur-sm"
-                  whileHover={{ scale: 1.1, rotate: 90 }}
-                  whileTap={{ scale: 0.9 }}
-                  initial={{ opacity: 0, rotate: -90 }}
+                  className="relative group p-2 rounded-full bg-gradient-to-r from-red-500/20 to-pink-500/20 border border-red-400/30 hover:border-red-400/60 transition-all duration-200 backdrop-blur-sm"
+                  whileHover={{ scale: 1.05, rotate: 90 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, rotate: -45 }}
                   animate={{ opacity: 1, rotate: 0 }}
-                  transition={{ delay: 0.5, duration: 0.6 }}
+                  transition={{ delay: 0.25, duration: 0.3 }}
                 >
                   <X className="w-5 h-5 text-red-300 group-hover:text-red-200 drop-shadow-[0_0_8px_rgba(248,113,113,0.5)]" />
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-red-500/20 to-pink-500/20 blur-lg group-hover:blur-sm transition-all duration-300"></div>
@@ -263,14 +263,14 @@ export default function HeroRSVPButton() {
               <form onSubmit={handleSubmit} className="relative z-10 space-y-4">
                 {/* PIN Input */}
                 <motion.div
-                  initial={{ opacity: 0, x: -30, rotateY: -15 }}
+                  initial={{ opacity: 0, x: -20, rotateY: -5 }}
                   animate={{ opacity: 1, x: 0, rotateY: 0 }}
-                  transition={{ delay: 0.4, duration: 0.6 }}
+                  transition={{ delay: 0.2, duration: 0.3 }}
                   className="relative"
                 >
                   <motion.label 
                     htmlFor="pin" 
-                    className="block text-cyan-200 font-semibold mb-3 flex items-center gap-3 text-sm sm:text-base"
+                    className="block text-cyan-200 font-sans text-refined mb-3 flex items-center gap-3 text-sm sm:text-base"
                     animate={{ 
                       textShadow: [
                         "0 0 10px rgba(6,182,212,0.5)",
@@ -278,11 +278,11 @@ export default function HeroRSVPButton() {
                         "0 0 10px rgba(6,182,212,0.5)"
                       ]
                     }}
-                    transition={{ duration: 2, repeat: Infinity }}
+                    transition={{ duration: 1.2, repeat: Infinity }}
                   >
                     <motion.div
                       animate={{ rotate: [0, 360] }}
-                      transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                      transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
                     >
                       <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-300 drop-shadow-[0_0_8px_rgba(253,224,71,0.6)]" />
                     </motion.div>
@@ -298,7 +298,7 @@ export default function HeroRSVPButton() {
                       onChange={handleInputChange}
                       required
                       maxLength={4}
-                      className="w-full px-4 py-3 sm:px-6 sm:py-4 bg-gradient-to-r from-black/60 to-gray-900/60 border border-cyan-400/40 rounded-xl text-white placeholder-cyan-200/50 focus:outline-none focus:border-cyan-300 focus:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all duration-500 text-center text-xl sm:text-2xl tracking-[0.5em] font-mono backdrop-blur-sm holographic-text"
+                      className="w-full px-4 py-3 sm:px-6 sm:py-4 bg-gradient-to-r from-black/60 to-gray-900/60 border border-cyan-400/40 rounded-xl text-white placeholder-cyan-200/50 focus:outline-none focus:border-cyan-300 focus:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all duration-500 text-center text-xl sm:text-2xl tracking-[0.4em] mono-soft backdrop-blur-sm holographic-text"
                       placeholder="••••"
                       autoComplete="off"
                       style={{
@@ -333,14 +333,14 @@ export default function HeroRSVPButton() {
 
                 {/* Name Input */}
                 <motion.div
-                  initial={{ opacity: 0, x: -30, rotateY: -15 }}
+                  initial={{ opacity: 0, x: -20, rotateY: -5 }}
                   animate={{ opacity: 1, x: 0, rotateY: 0 }}
-                  transition={{ delay: 0.5, duration: 0.6 }}
+                  transition={{ delay: 0.25, duration: 0.3 }}
                   className="relative"
                 >
                   <motion.label 
                     htmlFor="name" 
-                    className="block text-pink-200 font-semibold mb-3 flex items-center gap-3 text-sm sm:text-base"
+                    className="block text-pink-200 font-sans text-refined mb-3 flex items-center gap-3 text-sm sm:text-base"
                     animate={{ 
                       textShadow: [
                         "0 0 10px rgba(236,72,153,0.5)",
@@ -370,7 +370,7 @@ export default function HeroRSVPButton() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 sm:px-6 sm:py-4 bg-gradient-to-r from-black/60 to-gray-900/60 border border-pink-400/40 rounded-xl text-white placeholder-pink-200/50 focus:outline-none focus:border-pink-300 focus:shadow-[0_0_20px_rgba(236,72,153,0.4)] transition-all duration-500 text-base sm:text-lg backdrop-blur-sm holographic-text"
+                      className="w-full px-4 py-3 sm:px-6 sm:py-4 bg-gradient-to-r from-black/60 to-gray-900/60 border border-pink-400/40 rounded-xl text-white placeholder-pink-200/50 focus:outline-none focus:border-pink-300 focus:shadow-[0_0_20px_rgba(236,72,153,0.4)] transition-all duration-500 text-base sm:text-lg font-sans text-elegant backdrop-blur-sm holographic-text"
                       placeholder="Tu nombre completo..."
                       style={{
                         textShadow: "0 0 8px rgba(236,72,153,0.6)"
@@ -396,13 +396,13 @@ export default function HeroRSVPButton() {
 
                 {/* Attendance Selection */}
                 <motion.div
-                  initial={{ opacity: 0, x: -30, rotateY: -15 }}
+                  initial={{ opacity: 0, x: -20, rotateY: -5 }}
                   animate={{ opacity: 1, x: 0, rotateY: 0 }}
-                  transition={{ delay: 0.6, duration: 0.6 }}
+                  transition={{ delay: 0.3, duration: 0.3 }}
                   className="relative"
                 >
                   <motion.label 
-                    className="block text-orange-200 font-semibold mb-4 flex items-center gap-3 text-sm sm:text-base"
+                    className="block text-orange-200 font-sans text-refined mb-4 flex items-center gap-3 text-sm sm:text-base"
                     animate={{ 
                       textShadow: [
                         "0 0 10px rgba(251,146,60,0.5)",
@@ -450,7 +450,7 @@ export default function HeroRSVPButton() {
                         >
                           ✅
                         </motion.div>
-                        <div className="font-bold text-sm sm:text-base text-green-200 holographic-text">
+                        <div className="font-heading heading-soft text-sm sm:text-base text-green-200 holographic-text">
                           ¡SÍ VORY!
                         </div>
                       </div>
@@ -481,7 +481,7 @@ export default function HeroRSVPButton() {
                         >
                           ❌
                         </motion.div>
-                        <div className="font-bold text-sm sm:text-base text-red-200 holographic-text">
+                        <div className="font-heading heading-soft text-sm sm:text-base text-red-200 holographic-text">
                           NO PUEDO
                         </div>
                       </div>
@@ -505,14 +505,14 @@ export default function HeroRSVPButton() {
 
                 {/* Message Input */}
                 <motion.div
-                  initial={{ opacity: 0, x: -30, rotateY: -15 }}
+                  initial={{ opacity: 0, x: -20, rotateY: -5 }}
                   animate={{ opacity: 1, x: 0, rotateY: 0 }}
-                  transition={{ delay: 0.7, duration: 0.6 }}
+                  transition={{ delay: 0.35, duration: 0.3 }}
                   className="relative"
                 >
                   <motion.label 
                     htmlFor="message" 
-                    className="block text-purple-200 font-semibold mb-3 flex items-center gap-3 text-sm sm:text-base"
+                    className="block text-purple-200 font-sans text-refined mb-3 flex items-center gap-3 text-sm sm:text-base"
                     animate={{ 
                       textShadow: [
                         "0 0 10px rgba(168,85,247,0.5)",
@@ -541,7 +541,7 @@ export default function HeroRSVPButton() {
                       value={formData.message}
                       onChange={handleInputChange}
                       rows={3}
-                      className="w-full px-4 py-3 sm:px-6 sm:py-4 bg-gradient-to-r from-black/60 to-gray-900/60 border border-purple-400/40 rounded-xl text-white placeholder-purple-200/50 focus:outline-none focus:border-purple-300 focus:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all duration-500 resize-none text-sm sm:text-base backdrop-blur-sm holographic-text"
+                      className="w-full px-4 py-3 sm:px-6 sm:py-4 bg-gradient-to-r from-black/60 to-gray-900/60 border border-purple-400/40 rounded-xl text-white placeholder-purple-200/50 focus:outline-none focus:border-purple-300 focus:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all duration-500 resize-none text-sm sm:text-base font-sans text-elegant backdrop-blur-sm holographic-text"
                       placeholder="Mensaje para el cumpleañero... 😊"
                       style={{
                         textShadow: "0 0 8px rgba(168,85,247,0.6)"
@@ -555,16 +555,16 @@ export default function HeroRSVPButton() {
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  className="relative group w-full mt-6 py-3 px-6 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 hover:from-cyan-400/30 hover:to-blue-400/30 disabled:from-gray-500/20 disabled:to-gray-600/20 disabled:cursor-not-allowed text-white font-bold rounded-2xl transition-all duration-500 border border-cyan-400/40 hover:border-cyan-300/60 backdrop-blur-sm overflow-hidden transform-gpu"
+                  className="relative group w-full mt-6 py-3 px-6 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 hover:from-cyan-400/30 hover:to-blue-400/30 disabled:from-gray-500/20 disabled:to-gray-600/20 disabled:cursor-not-allowed text-white font-heading heading-soft rounded-2xl transition-all duration-300 border border-cyan-400/40 hover:border-cyan-300/60 backdrop-blur-sm overflow-hidden transform-gpu"
                   whileHover={{ 
-                    scale: 1.02, 
-                    rotateX: 2,
-                    boxShadow: "0 0 40px rgba(6,182,212,0.4)"
+                    scale: 1.01, 
+                    rotateX: 1,
+                    boxShadow: "0 0 30px rgba(6,182,212,0.4)"
                   }}
-                  whileTap={{ scale: 0.98, rotateX: -2 }}
-                  initial={{ opacity: 0, y: 30, rotateX: -10 }}
+                  whileTap={{ scale: 0.99, rotateX: -1 }}
+                  initial={{ opacity: 0, y: 15, rotateX: -5 }}
                   animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                  transition={{ delay: 0.8, duration: 0.6 }}
+                  transition={{ delay: 0.4, duration: 0.3 }}
                 >
                   {/* Light Sweep Effect */}
                   <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 ease-out"></div>
@@ -733,7 +733,7 @@ export default function HeroRSVPButton() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.6 }}
-                  className="text-2xl sm:text-3xl font-bold mb-4 bg-gradient-to-r from-emerald-300 via-cyan-300 to-blue-300 bg-clip-text text-transparent holographic-text"
+                  className="text-2xl sm:text-3xl font-heading heading-elegant mb-4 bg-gradient-to-r from-emerald-300 via-cyan-300 to-blue-300 bg-clip-text text-transparent holographic-text"
                   style={{ 
                     textShadow: "0 0 20px rgba(16,185,129,0.8)",
                   }}
@@ -746,12 +746,12 @@ export default function HeroRSVPButton() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7, duration: 0.6 }}
-                  className="text-emerald-100 mb-6 space-y-2"
+                  className="text-emerald-100 mb-6 space-y-2 font-sans"
                 >
-                  <p className="text-lg font-semibold">
+                  <p className="text-lg text-refined">
                     Gracias {formData.name}! 🎉
                   </p>
-                  <p className="text-emerald-200/80">
+                  <p className="text-emerald-200/80 text-elegant">
                     Tu {formData.attending === 'yes' ? 'asistencia ha sido confirmada' : 'respuesta ha sido registrada'}
                   </p>
                   <motion.p
@@ -774,7 +774,7 @@ export default function HeroRSVPButton() {
                     boxShadow: "0 0 30px rgba(16,185,129,0.5)"
                   }}
                   whileTap={{ scale: 0.95 }}
-                  className="relative group px-8 py-3 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 hover:from-emerald-400/30 hover:to-cyan-400/30 border border-emerald-400/40 hover:border-emerald-300/60 rounded-2xl text-emerald-200 hover:text-emerald-100 font-semibold transition-all duration-500 overflow-hidden backdrop-blur-sm"
+                  className="relative group px-8 py-3 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 hover:from-emerald-400/30 hover:to-cyan-400/30 border border-emerald-400/40 hover:border-emerald-300/60 rounded-2xl text-emerald-200 hover:text-emerald-100 font-heading heading-soft transition-all duration-500 overflow-hidden backdrop-blur-sm"
                 >
                   {/* Light Sweep Effect */}
                   <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 ease-out"></div>
