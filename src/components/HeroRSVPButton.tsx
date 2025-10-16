@@ -242,14 +242,14 @@ export default function HeroRSVPButton() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
-          className="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80 backdrop-blur-md"
+          className="modal-overlay fixed inset-0 z-50 flex items-start sm:items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-md"
           onClick={handleReset}
         >
           <motion.div
             initial={{ y: 30, rotateX: -10, rotateY: 5 }}
             animate={{ y: 0, rotateX: 0, rotateY: 0 }}
             transition={{ delay: 0.1, duration: 0.3, ease: "easeOut" }}
-            className="modal-container relative perspective-1000 transform-gpu max-w-sm sm:max-w-md w-full max-h-[80vh] sm:max-h-[85vh] overflow-y-auto futuristic-scrollbar"
+            className="modal-container relative perspective-1000 transform-gpu w-full sm:max-w-md h-screen sm:h-auto max-h-screen sm:max-h-[85vh] overflow-y-auto futuristic-scrollbar"
             onClick={(e) => e.stopPropagation()}
             style={{
               scrollbarWidth: 'thin',
@@ -261,7 +261,7 @@ export default function HeroRSVPButton() {
             }}
           >
             {/* Holographic Container */}
-            <div className="hologram-card bg-gradient-to-br from-cyan-900/30 via-purple-900/40 to-blue-900/30 backdrop-blur-xl rounded-3xl border border-cyan-400/30 shadow-[0_0_50px_rgba(6,182,212,0.3)] relative overflow-hidden p-4 sm:p-6">
+            <div className="hologram-card bg-gradient-to-br from-cyan-900/30 via-purple-900/40 to-blue-900/30 backdrop-blur-xl rounded-none sm:rounded-3xl border-0 sm:border border-cyan-400/30 shadow-[0_0_50px_rgba(6,182,212,0.3)] relative overflow-hidden pt-12 pb-20 px-4 sm:p-6 min-h-screen sm:min-h-0">
               {/* Animated Background Grid */}
               <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_24%,rgba(6,182,212,0.03)_25%,rgba(6,182,212,0.03)_26%,transparent_27%,transparent_74%,rgba(6,182,212,0.03)_75%,rgba(6,182,212,0.03)_76%,transparent_77%,transparent),linear-gradient(transparent_24%,rgba(6,182,212,0.03)_25%,rgba(6,182,212,0.03)_26%,transparent_27%,transparent_74%,rgba(6,182,212,0.03)_75%,rgba(6,182,212,0.03)_76%,transparent_77%,transparent)] bg-[size:50px_50px] animate-pulse"></div>
               
@@ -608,7 +608,8 @@ export default function HeroRSVPButton() {
                 </motion.div>
 
                 {/* Submit Button */}
-                <motion.button
+                <div className="submit-button-container">
+                  <motion.button
                   type="submit"
                   disabled={isSubmitting}
                   className="relative group w-full mt-6 py-3 px-6 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 hover:from-cyan-400/30 hover:to-blue-400/30 disabled:from-gray-500/20 disabled:to-gray-600/20 disabled:cursor-not-allowed text-white font-heading heading-soft rounded-2xl transition-all duration-300 border border-cyan-400/40 hover:border-cyan-300/60 backdrop-blur-sm overflow-hidden transform-gpu"
@@ -660,6 +661,7 @@ export default function HeroRSVPButton() {
                     )}
                   </div>
                 </motion.button>
+                </div>
               </form>
 
               {/* Error Message */}
