@@ -1,18 +1,10 @@
 {
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/node"
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "build": {
+    "env": {
+      "PUBLIC_SUPABASE_URL": "https://qavuevrjcjdotzcbblnb.supabase.co",
+      "PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFhdnVldnJqY2pkb3R6Y2JibG5iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA1NTQwNTksImV4cCI6MjA3NjEzMDA1OX0.uyyech6lrKciz_5yFBmMQ0LV24WRuBnXifcPWKj7NEU"
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/"
-    }
-  ],
-  "env": {
-    "SUPABASE_URL": "@supabase-url",
-    "SUPABASE_ANON_KEY": "@supabase-anon-key"
   }
 }
