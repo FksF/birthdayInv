@@ -1,0 +1,52 @@
+---
+import AdminDashboard from '../components/AdminDashboard.tsx';
+import '../styles/global.css';
+
+const title = "Panel de Administración - RSVPs";
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+</head>
+<body class="font-sans bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900 min-h-screen">
+    <!-- Header -->
+    <header class="bg-black/20 backdrop-blur-sm border-b border-purple-500/30">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <h1 class="text-2xl md:text-3xl font-heading font-bold text-white">
+                    📊 Panel de Administración
+                </h1>
+                <a href="/" class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300">
+                    ← Volver
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <AdminDashboard client:load />
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-black/20 backdrop-blur-sm border-t border-purple-500/30 mt-auto">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-purple-200 text-sm">
+                Panel administrativo - Cumpleaños 22 de Octubre 2025
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
