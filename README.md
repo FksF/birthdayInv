@@ -50,10 +50,10 @@ CREATE TABLE rsvps (
 
 -- Insertar PINs de ejemplo
 INSERT INTO valid_pins (pin_code) VALUES 
-('2210'),
-('5678'),
-('9876'),
-('4321');
+(''),
+(''),
+(''),
+('');
 
 -- Habilitar Row Level Security
 ALTER TABLE valid_pins ENABLE ROW LEVEL SECURITY;
