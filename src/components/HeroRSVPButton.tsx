@@ -1,4 +1,4 @@
-import { useState, useCallback, memo } from 'react';
+import { useState, useCallback, memo, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import { Heart, Sparkles, PartyPopper, Send, ChevronDown } from 'lucide-react';
@@ -33,6 +33,17 @@ export default function HeroRSVPButton() {
   const [error, setError] = useState('');
   
   const prefersReducedMotion = useReducedMotion();
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Scroll to top when submission is successful
+  useEffect(() => {
+    if (submitted && containerRef.current) {
+      containerRef.current.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'center' 
+      });
+    }
+  }, [submitted]);
 
   // Optimizar con useCallback
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -133,12 +144,30 @@ export default function HeroRSVPButton() {
 
       setSubmitted(true);
       
+      // Lanzar confetti desde múltiples posiciones para mejor visibilidad
       if (!prefersReducedMotion) {
+        // Confetti desde el centro
         confetti({
           particleCount: 50,
-          spread: 60,
-          origin: { y: 0.6 }
+          spread: 70,
+          origin: { y: 0.5, x: 0.5 }
         });
+        
+        // Confetti desde los lados con un pequeño delay
+        setTimeout(() => {
+          confetti({
+            particleCount: 30,
+            angle: 60,
+            spread: 55,
+            origin: { y: 0.5, x: 0 }
+          });
+          confetti({
+            particleCount: 30,
+            angle: 120,
+            spread: 55,
+            origin: { y: 0.5, x: 1 }
+          });
+        }, 100);
       }
 
     } catch (err) {
@@ -158,7 +187,7 @@ export default function HeroRSVPButton() {
   }, []);
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div ref={containerRef} className="w-full max-w-2xl mx-auto">
       <AnimatePresence mode="wait">
         {!submitted ? (
           <div className="w-full">
