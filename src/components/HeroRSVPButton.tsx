@@ -215,53 +215,61 @@ export default function HeroRSVPButton() {
   };
 
   return (
-    <AnimatePresence mode="wait">
-      {!showForm ? (
-        // Initial Button
-        <motion.button
-          key="initial-button"
-          onClick={() => setShowForm(true)}
-          className="w-full sm:w-auto inline-block bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-heading font-semibold py-3 px-6 sm:py-4 sm:px-8 rounded-full text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl animate-pulse group max-w-sm sm:max-w-none mx-auto text-elegant"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Sparkles className="inline w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:animate-spin" />
-          <span className="hidden sm:inline">✨ ¡CONFIRMAR ASISTENCIA! ✨</span>
-          <span className="sm:hidden">✨ CONFIRMAR ✨</span>
-          <ChevronDown className="inline w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:animate-bounce" />
-        </motion.button>
-      ) : !submitted ? (
-        // Modal Form - Futuristic Design
-        <motion.div
-          key="modal-form"
-          initial={{ opacity: 0, scale: 0.9, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.9, y: 20 }}
-          transition={{ duration: 0.25, ease: "easeOut" }}
-          className="modal-overlay fixed inset-0 z-50 flex items-start sm:items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-md"
-          onClick={handleReset}
-        >
+    <div className="w-full max-w-2xl mx-auto">
+      <AnimatePresence mode="wait">
+        {!submitted ? (
           <motion.div
-            initial={{ y: 30, rotateX: -10, rotateY: 5 }}
-            animate={{ y: 0, rotateX: 0, rotateY: 0 }}
-            transition={{ delay: 0.1, duration: 0.3, ease: "easeOut" }}
-            className="modal-container relative perspective-1000 transform-gpu w-full sm:max-w-md h-screen sm:h-auto max-h-screen sm:max-h-[85vh] overflow-y-auto futuristic-scrollbar"
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              scrollbarWidth: 'thin',
-              scrollbarColor: '#06b6d4 transparent',
-              // Mejorar comportamiento en iOS
-              WebkitOverflowScrolling: 'touch',
-              // Evitar que el scroll se vaya al mapa en móviles
-              touchAction: 'pan-y'
-            }}
+            key="form-container"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="w-full"
           >
-            {/* Holographic Container */}
-            <div className="hologram-card bg-gradient-to-br from-cyan-900/30 via-purple-900/40 to-blue-900/30 backdrop-blur-xl rounded-none sm:rounded-3xl border-0 sm:border border-cyan-400/30 shadow-[0_0_50px_rgba(6,182,212,0.3)] relative overflow-hidden pt-12 pb-20 px-4 sm:p-6 min-h-screen sm:min-h-0">
+            {/* Button */}
+            <motion.button
+              onClick={() => setShowForm(!showForm)}
+              className="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-heading font-semibold py-3 px-6 sm:py-4 sm:px-8 rounded-full text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl group text-elegant"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              style={{
+                animation: showForm ? 'none' : 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+              }}
+            >
+              <Sparkles className="inline w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:animate-spin" />
+              <span className="hidden sm:inline">
+                {showForm ? '✨ OCULTAR FORMULARIO ✨' : '✨ ¡CONFIRMAR ASISTENCIA! ✨'}
+              </span>
+              <span className="sm:hidden">
+                {showForm ? '✨ OCULTAR ✨' : '✨ CONFIRMAR ✨'}
+              </span>
+              <motion.div
+                className="inline-block ml-2"
+                animate={{ rotate: showForm ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ChevronDown className="inline w-4 h-4 sm:w-5 sm:h-5" />
+              </motion.div>
+            </motion.button>
+
+            {/* Expandable Form */}
+            <AnimatePresence>
+              {showForm && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0, y: -20 }}
+                  animate={{ height: "auto", opacity: 1, y: 0 }}
+                  exit={{ height: 0, opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  className="overflow-hidden"
+                >
+                  <motion.div
+                    initial={{ scale: 0.95 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.1, duration: 0.3 }}
+                    className="mt-6"
+                  >
+                    {/* Holographic Container */}
+                    <div className="hologram-card bg-gradient-to-br from-cyan-900/30 via-purple-900/40 to-blue-900/30 backdrop-blur-xl rounded-3xl border border-cyan-400/30 shadow-[0_0_50px_rgba(6,182,212,0.3)] relative overflow-hidden p-6">
               {/* Animated Background Grid */}
               <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_24%,rgba(6,182,212,0.03)_25%,rgba(6,182,212,0.03)_26%,transparent_27%,transparent_74%,rgba(6,182,212,0.03)_75%,rgba(6,182,212,0.03)_76%,transparent_77%,transparent),linear-gradient(transparent_24%,rgba(6,182,212,0.03)_25%,rgba(6,182,212,0.03)_26%,transparent_27%,transparent_74%,rgba(6,182,212,0.03)_75%,rgba(6,182,212,0.03)_76%,transparent_77%,transparent)] bg-[size:50px_50px] animate-pulse"></div>
               
@@ -694,29 +702,24 @@ export default function HeroRSVPButton() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
-        </motion.div>
-      ) : (
-        // Success Modal - Futuristic Design (mantener el original)
-        <motion.div
-          key="success-modal"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
-          onClick={handleReset}
-        >
+        ) : (
+          // Success Card - Inline Design
           <motion.div
-            initial={{ scale: 0.5, rotateY: -90, rotateX: 30 }}
-            animate={{ scale: 1, rotateY: 0, rotateX: 0 }}
-            exit={{ scale: 0.5, rotateY: 90, rotateX: -30 }}
-            transition={{ duration: 0.8, ease: "backOut" }}
-            className="relative max-w-md w-full perspective-1000 transform-gpu"
-            onClick={(e) => e.stopPropagation()}
+            key="success-card"
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="w-full mt-6"
           >
             {/* Holographic Success Card */}
-            <div className="relative bg-gradient-to-br from-emerald-900/20 via-cyan-900/30 to-blue-900/20 backdrop-blur-xl rounded-3xl border border-emerald-400/40 shadow-[0_0_80px_rgba(16,185,129,0.4)] p-8 overflow-hidden">
+            <div className="relative bg-gradient-to-br from-emerald-900/20 via-cyan-900/30 to-blue-900/20 backdrop-blur-xl rounded-3xl border border-emerald-400/40 shadow-[0_0_80px_rgba(16,185,129,0.4)] p-6 sm:p-8 overflow-hidden">
               
               {/* Particle Explosion Background */}
               <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -842,8 +845,8 @@ export default function HeroRSVPButton() {
               </div>
             </div>
           </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
