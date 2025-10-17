@@ -34,6 +34,7 @@ export default function HeroRSVPButton() {
   
   const prefersReducedMotion = useReducedMotion();
   const containerRef = useRef<HTMLDivElement>(null);
+  const pinInputRef = useRef<HTMLInputElement>(null);
 
   // Scroll to top when submission is successful
   useEffect(() => {
@@ -44,6 +45,18 @@ export default function HeroRSVPButton() {
       });
     }
   }, [submitted]);
+
+  // Focus on PIN input when form opens
+  useEffect(() => {
+    if (showForm && pinInputRef.current) {
+      // Small delay to ensure the animation has started
+      const timer = setTimeout(() => {
+        pinInputRef.current?.focus();
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+    return undefined;
+  }, [showForm]);
 
   // Optimizar con useCallback
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -242,9 +255,9 @@ export default function HeroRSVPButton() {
                           type="text"
                           id="pin"
                           name="pin"
+                          ref={pinInputRef}
                           value={formData.pin}
                           onChange={handleInputChange}
-                          autoFocus
                           required
                           maxLength={4}
                           inputMode="numeric"
@@ -381,12 +394,18 @@ export default function HeroRSVPButton() {
           <motion.div {...fadeIn} className="w-full mt-6">
             <div className="bg-gradient-to-br from-emerald-900/20 via-cyan-900/30 to-blue-900/20 backdrop-blur-xl rounded-3xl border border-emerald-400/40 shadow-lg p-6 sm:p-8">
               <div className="text-center">
-                <div className="w-20 h-20 mx-auto bg-gradient-to-br from-emerald-400 to-cyan-400 rounded-full flex items-center justify-center shadow-lg mb-6">
-                  <div className="text-4xl">✅</div>
+                <div className="w-32 h-32 mx-auto bg-gradient-to-br from-emerald-400 to-cyan-400 rounded-full flex items-center justify-center shadow-lg mb-6 overflow-hidden">
+                  <img 
+                    src="/videos/beer-german.gif" 
+                    alt="Celebración" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
                 <h2 className="text-2xl sm:text-3xl font-heading mb-4 bg-gradient-to-r from-emerald-300 via-cyan-300 to-blue-300 bg-clip-text text-transparent">
-                  ¡Confirmación Exitosa!
+                  {formData.attending === 'yes' 
+                    ? '¡Buena bocina! Sabia decisión' 
+                    : '¡Igual no pensaba invitarte! XD chistín chistín'}
                 </h2>
 
                 <div className="text-emerald-100 mb-6 space-y-2">
@@ -394,9 +413,11 @@ export default function HeroRSVPButton() {
                   <p className="text-emerald-200/80">
                     Tu {formData.attending === 'yes' ? 'asistencia ha sido confirmada' : 'respuesta ha sido registrada'}
                   </p>
-                  <p className="text-sm text-cyan-300">
-                    ¡Nos vemos el 22 de Octubre! 🥳
-                  </p>
+                  {formData.attending === 'yes' && (
+                    <p className="text-sm text-cyan-300">
+                      ¡Nos vemos el 22 de Octubre! 🥳
+                    </p>
+                  )}
                 </div>
 
                 <button
