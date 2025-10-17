@@ -79,10 +79,14 @@ const description = "Solo una tomada más entre patas 🎂 Te invito a celebrar 
         
         <!-- Video de fondo con efecto -->
         <video 
+            id="bg-video"
             autoplay 
             loop 
             muted 
             playsinline
+            preload="auto"
+            webkit-playsinline="true"
+            x-webkit-airplay="allow"
             class="absolute inset-0 w-full h-full object-cover opacity-60"
             poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E"
         >
@@ -213,6 +217,47 @@ const description = "Solo una tomada más entre patas 🎂 Te invito a celebrar 
         </div>
     </footer>
 
+    <!-- Script para forzar autoplay del video en móviles -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('bg-video') as HTMLVideoElement;
+            
+            if (video) {
+                // Configurar atributos necesarios
+                video.muted = true;
+                video.playsInline = true;
+                video.setAttribute('playsinline', '');
+                video.setAttribute('webkit-playsinline', '');
+                
+                // Intentar reproducir el video
+                const playPromise = video.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        console.log('Video playing successfully');
+                    }).catch((error: Error) => {
+                        console.log('Autoplay prevented:', error);
+                        
+                        // Intentar reproducir en el primer toque/click del usuario
+                        const playOnInteraction = () => {
+                            video.play().then(() => {
+                                console.log('Video started after user interaction');
+                            }).catch((err: Error) => {
+                                console.log('Still failed to play:', err);
+                            });
+                            
+                            // Remover listeners después del primer intento
+                            document.removeEventListener('touchstart', playOnInteraction);
+                            document.removeEventListener('click', playOnInteraction);
+                        };
+                        
+                        document.addEventListener('touchstart', playOnInteraction, { once: true });
+                        document.addEventListener('click', playOnInteraction, { once: true });
+                    });
+                }
+            }
+        });
+    </script>
 
 </body>
 </html>
