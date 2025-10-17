@@ -204,16 +204,62 @@ const description = "Solo una tomada más entre patas 🎂 Te invito a celebrar 
 
 
 
-    <!-- Footer - Simplificado -->
-    <footer class="py-8 sm:py-12 bg-black/50 backdrop-blur-md border-t border-purple-500/40 relative">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <div class="text-2xl sm:text-3xl mb-3 sm:mb-4 animate-sparkle">🎂🎉🥳</div>
-            <p class="text-purple-200 mb-2 text-sm sm:text-base px-4 galaxy-glow">
-                ¡No faltes! Va a estar increíble
-            </p>
-            <p class="text-purple-300 text-xs sm:text-sm px-4">
-                22 de Octubre 2025 • Desde las 11 AM • Miraflores
-            </p>
+    <!-- Footer - Mejorado -->
+    <footer class="relative py-12 sm:py-16 bg-gradient-to-b from-black/50 via-purple-900/30 to-black/70 backdrop-blur-md border-t border-purple-500/40 overflow-hidden">
+        <!-- Efectos de fondo -->
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-pink-500 to-purple-500 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-10 right-10 w-40 h-40 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+        </div>
+
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Main Content -->
+            <div class="text-center mb-8">
+                <!-- Animated Icons -->
+                <div class="flex justify-center gap-3 sm:gap-4 mb-6 text-3xl sm:text-4xl">
+                    <span class="animate-bounce" style="animation-delay: 0s;">🎂</span>
+                    <span class="animate-bounce" style="animation-delay: 0.1s;">🎉</span>
+                    <span class="animate-bounce" style="animation-delay: 0.2s;">🥳</span>
+                    <span class="animate-bounce" style="animation-delay: 0.3s;">🍻</span>
+                    <span class="animate-bounce" style="animation-delay: 0.4s;">🎊</span>
+                </div>
+
+                <!-- Main Message -->
+                <h3 class="text-2xl sm:text-3xl lg:text-4xl font-heading heading-bold mb-4 bg-gradient-to-r from-yellow-300 via-pink-300 to-purple-300 bg-clip-text text-transparent">
+                    ¡No faltes! Va a estar increíble
+                </h3>
+
+                <!-- Event Details Cards -->
+                <div class="flex flex-col sm:flex-row gap-3 justify-center items-center max-w-3xl mx-auto mb-8">
+                    <div class="bg-purple-500/20 backdrop-blur-sm border border-purple-400/30 rounded-2xl px-4 py-3 w-full sm:w-auto">
+                        <div class="text-yellow-400 text-xs font-heading mb-1">📅 FECHA</div>
+                        <div class="text-white font-sans text-sm sm:text-base">22 de Octubre 2025</div>
+                    </div>
+                    
+                    <div class="bg-cyan-500/20 backdrop-blur-sm border border-cyan-400/30 rounded-2xl px-4 py-3 w-full sm:w-auto">
+                        <div class="text-yellow-400 text-xs font-heading mb-1">🕐 HORA</div>
+                        <div class="text-white font-sans text-sm sm:text-base">Desde las 11 AM</div>
+                    </div>
+                    
+                    <div class="bg-pink-500/20 backdrop-blur-sm border border-pink-400/30 rounded-2xl px-4 py-3 w-full sm:w-auto">
+                        <div class="text-yellow-400 text-xs font-heading mb-1">📍 LUGAR</div>
+                        <div class="text-white font-sans text-sm sm:text-base">Miraflores</div>
+                    </div>
+                </div>
+
+                <!-- Tagline -->
+                <p class="text-purple-200/80 text-sm sm:text-base italic mb-6 px-4">
+                    "Solo una tomada más entre patas" 🍺✨
+                </p>
+
+                <!-- Divider -->
+                <div class="w-32 h-1 bg-gradient-to-r from-transparent via-purple-400 to-transparent mx-auto mb-6"></div>
+
+                <!-- Copyright / Final Message -->
+                <p class="text-purple-300/60 text-xs sm:text-sm">
+                    Hecho con 💜 y mucha 🍺 🍻🍺 🍻
+                </p>
+            </div>
         </div>
     </footer>
 
