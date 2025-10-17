@@ -338,8 +338,7 @@ export default function HeroRSVPButton() {
                       {/* Message Input */}
                       <div>
                         <label htmlFor="message" className="block text-purple-200 font-sans mb-2 flex items-center gap-2 text-sm sm:text-base">
-                          <Heart className="w-4 h-4 text-purple-400" />
-                          💬 Mensaje (opcional)
+                          💬 Mensaje para mi o sugerencia sobre el tono ? Igual no se tomara en cuenta pero ya lo escribiste XD (opcional)
                         </label>
                         
                         <textarea
@@ -349,7 +348,7 @@ export default function HeroRSVPButton() {
                           onChange={handleInputChange}
                           rows={3}
                           className="w-full px-4 py-3 bg-black/60 border border-purple-400/40 rounded-xl text-white placeholder-purple-200/50 focus:outline-none focus:border-purple-300 transition-colors duration-200 resize-none text-sm sm:text-base"
-                          placeholder="Mensaje para el cumpleañero... 😊"
+                          placeholder="cri cri cri ... 😊"
                         />
                       </div>
 
