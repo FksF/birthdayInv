@@ -1,11 +1,6 @@
 import { useState, useEffect } from 'react';
-import { createClient } from '@supabase/supabase-js';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const supabase = createClient(
-  import.meta.env.PUBLIC_SUPABASE_URL,
-  import.meta.env.PUBLIC_SUPABASE_ANON_KEY
-);
+import { getSupabaseClient } from '../lib/supabase';
 
 interface RSVP {
   id: number;
@@ -37,6 +32,8 @@ export default function AdminDashboard() {
       setLoading(true);
       setError('');
 
+      const supabase = getSupabaseClient();
+      
       const { data, error: fetchError } = await supabase
         .from('rsvps')
         .select('*')
@@ -47,8 +44,8 @@ export default function AdminDashboard() {
       setRsvps(data || []);
       
       // Calculate stats
-      const attending = data?.filter(r => r.attending).length || 0;
-      const notAttending = data?.filter(r => !r.attending).length || 0;
+      const attending = data?.filter((r: RSVP) => r.attending).length || 0;
+      const notAttending = data?.filter((r: RSVP) => !r.attending).length || 0;
       const total = data?.length || 0;
       
       setStats({ attending, notAttending, total });
