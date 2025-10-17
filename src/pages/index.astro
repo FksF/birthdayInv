@@ -72,29 +72,45 @@ const description = "Solo una tomada más entre patas 🎂 Te invito a celebrar 
     </script>
 </head>
 <body class="font-sans min-h-screen scroll-smooth relative">
-    <!-- Fondo de Galaxia Animado -->
-    <div class="galaxy-background"></div>
-    <div class="stars-layer-1"></div>
-    <div class="stars-layer-2"></div>
-    <div class="stars-layer-3"></div>
-    <div class="nebula-layer"></div>
-    <div class="cosmic-dust"></div>
-    <div class="shooting-stars">
-        <div class="shooting-star"></div>
-        <div class="shooting-star"></div>
-        <div class="shooting-star"></div>
-        <div class="shooting-star"></div>
+    <!-- Video de fondo -->
+    <div class="fixed inset-0 w-full h-full overflow-hidden z-[-1]">
+        <!-- Fallback background gradient -->
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900"></div>
+        
+        <!-- Video de fondo con efecto -->
+        <video 
+            autoplay 
+            loop 
+            muted 
+            playsinline
+            class="absolute inset-0 w-full h-full object-cover opacity-60"
+            poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E"
+        >
+            <!-- Puedes usar videos de fondo gratuitos de estos sitios:
+                 - https://www.pexels.com/search/videos/party%20confetti/
+                 - https://pixabay.com/videos/search/celebration/
+                 - https://coverr.co/
+                 
+                 Recomendaciones:
+                 - Video de partículas/confetti
+                 - Video de luces bokeh
+                 - Video de estrellas/galaxia
+                 - Video de fuegos artificiales suaves
+            -->
+            <source src="/videos/celebration-bg.mp4" type="video/mp4">
+            <source src="/videos/celebration-bg.webm" type="video/webm">
+        </video>
+        
+        <!-- Overlay para mejorar contraste del texto -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
     </div>
     
-    <!-- Auroras cósmicas -->
-    <div class="cosmic-aurora"></div>
-    
-    <!-- Partículas flotantes adicionales - Reducidas para mejor rendimiento -->
+    <!-- Partículas flotantes ligeras (opcional, mantener pocas) -->
     <div class="floating-particles-layer">
         <div class="cosmic-particle" style="top: 10%; left: 5%; animation-delay: 0s;"></div>
         <div class="cosmic-particle" style="top: 70%; left: 85%; animation-delay: 2s;"></div>
-        <div class="cosmic-particle" style="top: 40%; left: 15%; animation-delay: 4s;"></div>
     </div>
+    
     <!-- Hero Section -->
     <section class="relative overflow-hidden min-h-screen flex items-center">
         <!-- Background decorations - Reducidos para mejor rendimiento en móvil -->
@@ -121,21 +137,27 @@ const description = "Solo una tomada más entre patas 🎂 Te invito a celebrar 
                 </h1>
                 
                 <!-- Subtitle -->
-                <p class="text-lg sm:text-xl lg:text-2xl text-purple-100 font-sans text-elegant mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
-                    Será solo una tomada más entre patas 🎉
+                <p class="text-lg sm:text-xl lg:text-2xl text-purple-100 font-heading text-elegant mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
+                    Será solo una tomada más entre patas, te apuntas ? 🍻
                 </p>
                 
                 <!-- Time and Place -->
-                <div class="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-center mb-8 sm:mb-12 px-4">
-                    <div class="bg-black/40 backdrop-blur-md rounded-lg p-3 sm:p-5 border border-purple-500/40 w-full sm:w-auto max-w-xs cosmic-hover galaxy-glow">
-                        <div class="text-yellow-400 font-heading heading-soft mb-1 text-xs sm:text-sm">🕐 HORA</div>
+                <div class="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-stretch mb-8 sm:mb-12 px-4">
+                    <div class="bg-black/40 backdrop-blur-md rounded-lg p-3 sm:p-5 border border-purple-500/40 w-full sm:w-64 flex flex-col justify-center cosmic-hover galaxy-glow min-h-[120px] sm:min-h-[140px]">
+                        <div class="text-yellow-400 font-heading heading-soft mb-2 text-xs sm:text-sm">🕐 HORA</div>
                         <div class="text-white text-base sm:text-lg font-sans text-elegant">Desde las 11 AM</div>
                     </div>
-                    <div class="bg-black/40 backdrop-blur-md rounded-lg p-3 sm:p-5 border border-purple-500/40 w-full sm:w-auto max-w-xs cosmic-hover galaxy-glow">
-                        <div class="text-yellow-400 font-heading heading-soft mb-1 text-xs sm:text-sm">📍 LUGAR</div>
-                        <div class="text-white text-base sm:text-lg font-sans text-elegant">Miraflores</div>
-                        <div class="text-purple-200 text-xs font-sans text-soft">Ca. Ramón Castilla 399-383</div>
-                    </div>
+                    <a 
+                        href="#ubicacion" 
+                        class="bg-black/40 backdrop-blur-md rounded-lg p-3 sm:p-5 border border-purple-500/40 w-full sm:w-64 flex flex-col justify-center cosmic-hover galaxy-glow transition-all duration-300 hover:scale-105 hover:border-yellow-400/60 hover:bg-black/60 cursor-pointer group min-h-[120px] sm:min-h-[140px]"
+                    >
+                        <div class="text-yellow-400 font-heading heading-soft mb-2 text-xs sm:text-sm group-hover:animate-pulse">📍 LUGAR</div>
+                        <div class="text-white text-base sm:text-lg font-sans text-elegant group-hover:text-yellow-200 transition-colors">Miraflores</div>
+                        <div class="text-purple-200 text-xs font-sans text-soft group-hover:text-purple-100 transition-colors">Ca. Ramón Castilla 399-383</div>
+                        <div class="text-yellow-400/70 text-[10px] sm:text-xs font-sans text-soft mt-2 group-hover:text-yellow-300 transition-colors">
+                            👆 Click para ver el mapa
+                        </div>
+                    </a>
                 </div>
                 
                 <!-- CTA Button -->
@@ -147,7 +169,7 @@ const description = "Solo una tomada más entre patas 🎂 Te invito a celebrar 
     </section>
 
     <!-- Location Section -->
-    <section class="py-12 sm:py-16 lg:py-20 bg-black/20 backdrop-blur-sm">
+    <section id="ubicacion" class="py-12 sm:py-16 lg:py-20 bg-black/20 backdrop-blur-sm scroll-mt-20">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading heading-bold text-center text-white mb-8 sm:mb-12">
                 📍 UBICACIÓN
