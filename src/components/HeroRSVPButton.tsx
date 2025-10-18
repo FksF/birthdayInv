@@ -34,7 +34,6 @@ export default function HeroRSVPButton() {
   
   const prefersReducedMotion = useReducedMotion();
   const containerRef = useRef<HTMLDivElement>(null);
-  const pinInputRef = useRef<HTMLInputElement>(null);
 
   // Scroll to top when submission is successful
   useEffect(() => {
@@ -45,18 +44,6 @@ export default function HeroRSVPButton() {
       });
     }
   }, [submitted]);
-
-  // Focus on PIN input when form opens
-  useEffect(() => {
-    if (showForm && pinInputRef.current) {
-      // Small delay to ensure the animation has started
-      const timer = setTimeout(() => {
-        pinInputRef.current?.focus();
-      }, 100);
-      return () => clearTimeout(timer);
-    }
-    return undefined;
-  }, [showForm]);
 
   // Optimizar con useCallback
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -255,7 +242,6 @@ export default function HeroRSVPButton() {
                           type="text"
                           id="pin"
                           name="pin"
-                          ref={pinInputRef}
                           value={formData.pin}
                           onChange={handleInputChange}
                           required
