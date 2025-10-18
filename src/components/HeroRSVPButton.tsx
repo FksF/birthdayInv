@@ -119,17 +119,23 @@ export default function HeroRSVPButton() {
     setError('');
 
     try {
-      const validPinCodes = ['2210', '5678', '9876', '4321'];
+      const supabase = getSupabaseClient();
       
-      if (!validPinCodes.includes(formData.pin)) {
+      // Validar que el PIN existe y está activo en la base de datos
+      const { data: pinData, error: pinError } = await supabase
+        .from('valid_pins')
+        .select('pin_code, is_active, description')
+        .eq('pin_code', formData.pin)
+        .eq('is_active', true)
+        .single();
+
+      if (pinError || !pinData) {
         setErrors({ pin: 'Código PIN inválido. Verifica tu invitación.' });
         setIsSubmitting(false);
         return;
       }
-
-      const supabase = getSupabaseClient();
       
-      // Submit RSVP
+      // Submit RSVP (el PIN puede ser reutilizado por múltiples personas)
       const { error: insertError } = await supabase
         .from('rsvps')
         .insert([{
